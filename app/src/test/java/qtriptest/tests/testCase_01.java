@@ -37,7 +37,8 @@ public class testCase_01 {
         logStatus("driver", "Initializing driver", "Success");
 	}
 
-    @Test(dataProvider = "DatasetsforQTrip", dataProviderClass =DP.class, enabled = true, description = "verify Login flow" , priority = 1, groups={"Login Flow"})
+    @Test(dataProvider = "DatasetsforQTrip", dataProviderClass =DP.class, enabled = true,
+     description = "verify Login flow" , priority = 1, groups={"Login Flow"})
      public  void TestCase01(String Username, String password) throws InterruptedException{
 		
 		driver.manage().window().maximize();

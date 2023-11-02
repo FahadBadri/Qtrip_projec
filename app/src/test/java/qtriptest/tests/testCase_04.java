@@ -42,7 +42,7 @@ public static void createDriver() throws MalformedURLException {
 
 
 @Test(dataProvider = "DatasetsforQTrip", dataProviderClass =DP.class, enabled = true,
-description = " Booking History Flow" , priority = 4, groups={"Booking and Cancellation Flow"})
+description = " Booking History Flow" , priority = 4, groups={"Reliability Flow"})
 
         
 public static void TestCase04(String NewUserName,String Password, String dataset1,String dataset2,String dataset3)
