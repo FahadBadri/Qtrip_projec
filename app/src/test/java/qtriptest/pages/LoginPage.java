@@ -1,9 +1,11 @@
 package qtriptest.pages;
 
+import java.util.concurrent.TimeUnit;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.pagefactory.AjaxElementLocatorFactory;
 
 public class LoginPage {
     RemoteWebDriver driver;
@@ -11,8 +13,13 @@ public class LoginPage {
     public String lastgeneratedUsername = "";
 
     public LoginPage(RemoteWebDriver driver){
-        this.driver=driver;
-        PageFactory.initElements(this.driver,this);
+         this.driver=driver;
+        // // PageFactory.initElements(this.driver,this);
+        // driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+        // PageFactory.initElements(new AjaxElementLocatorFactory(driver, 20), this);
+        AjaxElementLocatorFactory ajax= new AjaxElementLocatorFactory(driver,  10);
+        PageFactory.initElements(ajax, this);
+
 }
         public void navigatetoLoginPage(){
             if(!driver.getCurrentUrl().equals(Url)){

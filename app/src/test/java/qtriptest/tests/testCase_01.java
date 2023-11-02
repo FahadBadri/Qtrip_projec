@@ -3,6 +3,7 @@ package qtriptest.tests;
 import java.net.MalformedURLException;
 import java.net.URL;
 import qtriptest.DP;
+import qtriptest.DriverSingleton;
 import qtriptest.pages.HomePage;
 import qtriptest.pages.LoginPage;
 import qtriptest.pages.RegisterPage;
@@ -32,7 +33,8 @@ public class testCase_01 {
 		final DesiredCapabilities capabilities = new DesiredCapabilities();
 		capabilities.setBrowserName(BrowserType.CHROME);
 		driver = new RemoteWebDriver(new URL("http://localhost:8082/wd/hub"), capabilities);
-		logStatus("driver", "Initializing driver", "Success");
+		//driver = DriverSingleton.getDriverInstance("chrome");
+        logStatus("driver", "Initializing driver", "Success");
 	}
 
     @Test(dataProvider = "DatasetsforQTrip", dataProviderClass =DP.class, enabled = true, description = "verify Login flow" , priority = 1, groups={"Login Flow"})
