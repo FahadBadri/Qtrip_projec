@@ -56,10 +56,10 @@ String ExpectedFilteredResults, String ExpectedUnFilteredResults) throws Interru
 
             //Thread.sleep(2000);
             
-            home.searchCity("Delh");
+            home.searchCity(CityName);
             Assert.assertFalse(home.verifyCityNotFound()," No Match found is Displayed");
            
-            home.searchCity("Paris");
+            home.searchCity(CityName);
 
            Thread.sleep(5000);
            
