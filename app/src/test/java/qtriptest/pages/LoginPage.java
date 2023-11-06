@@ -1,5 +1,6 @@
 package qtriptest.pages;
 
+import qtriptest.SeleniumWrapper;
 import java.util.concurrent.TimeUnit;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.RemoteWebDriver;
@@ -22,9 +23,10 @@ public class LoginPage {
 
 }
         public void navigatetoLoginPage(){
-            if(!driver.getCurrentUrl().equals(Url)){
-                driver.get(Url);
-            }
+            // if(!driver.getCurrentUrl().equals(Url)){
+            //     driver.get(Url);
+            // }
+            SeleniumWrapper.navigate(driver, Url);
         }
 
         @FindBy (name ="email") 
@@ -47,10 +49,15 @@ public class LoginPage {
 
         public void performLogin(String username, String password){
             try{
-                email_Text_box.sendKeys(username);
-                password_Text_box.sendKeys(password);
-                login_toqtrip_Button_box.click();
-                Thread.sleep(5000);
+                // email_Text_box.sendKeys(username);
+                // password_Text_box.sendKeys(password);
+                // login_toqtrip_Button_box.click();
+                // Thread.sleep(5000);
+                SeleniumWrapper.sendKeys(email_Text_box, username);
+               
+                SeleniumWrapper.sendKeys(password_Text_box, password);
+               
+                SeleniumWrapper.click(login_toqtrip_Button_box, driver);
 
             }catch(Exception e){
                 System.out.println(e);
@@ -68,18 +75,18 @@ public class LoginPage {
         }
 
         
-        public boolean verifyLogOut(){
-            if(Login_here_verify.isDisplayed()){
-                return true;
-            }else{
-                return false;
-            }
-        }
+        // public boolean verifyLogOut(){
+        //     if(Login_here_verify.isDisplayed()){
+        //         return true;
+        //     }else{
+        //         return false;
+        //     }
+        // }
 
 
-        public void logout(){
-            log_out_button.click();
-        }
+        // public void logout(){
+        //     log_out_button.click();
+        // }
 
         
     }

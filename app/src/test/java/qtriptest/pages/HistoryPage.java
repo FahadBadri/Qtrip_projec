@@ -1,6 +1,7 @@
 
 package qtriptest.pages;
 
+import qtriptest.SeleniumWrapper;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 import org.openqa.selenium.WebElement;
@@ -70,7 +71,8 @@ public class HistoryPage {
 
     public boolean cancelReservations() throws InterruptedException {
         //Thread.sleep(3000);
-        cancel_button.click();
+       SeleniumWrapper.click(cancel_button, driver);
+       // cancel_button.click();
         Thread.sleep(2000);
        // 
         
@@ -95,11 +97,13 @@ public class HistoryPage {
 
     public void logout() throws InterruptedException {
         Thread.sleep(2000);
-        LogOutBtn.click();
+        SeleniumWrapper.click(LogOutBtn, driver);
+        //LogOutBtn.click();
     }
 
-    public void reservationClick(){
-        reservations.click();
+    public void reservationClick() throws InterruptedException{
+        SeleniumWrapper.click(reservations, driver);
+       // reservations.click();
     }
 
 

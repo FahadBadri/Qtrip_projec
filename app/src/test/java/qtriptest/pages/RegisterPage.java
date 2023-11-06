@@ -1,5 +1,6 @@
 package qtriptest.pages;
 
+import qtriptest.SeleniumWrapper;
 import java.util.UUID;
 import java.util.concurrent.TimeUnit;
 import org.openqa.selenium.WebElement;
@@ -54,15 +55,23 @@ public class RegisterPage {
             Username = UUID.randomUUID().toString()+"@gmail.com";
 }
             lastgeneratedUsername= Username;
-            usernameTextBx.clear();
-            usernameTextBx.sendKeys(Username);
-            passwordTextBx.clear();
-            passwordTextBx.sendKeys(password);
-            confirmPasswordBx.clear();
-            confirmPasswordBx.sendKeys(password);
-            RegisterNowButton.click();
-            Thread.sleep(5000);
+            SeleniumWrapper.sendKeys(usernameTextBx, Username);
 
+           // usernameTextBx.clear();
+           // usernameTextBx.sendKeys(Username);
+              
+           SeleniumWrapper.sendKeys(passwordTextBx, password);
+
+           // passwordTextBx.clear();
+           // passwordTextBx.sendKeys(password);
+
+           // confirmPasswordBx.clear();
+           SeleniumWrapper.sendKeys(confirmPasswordBx, password);
+           // confirmPasswordBx.sendKeys(password);
+           
+           // RegisterNowButton.click();
+            Thread.sleep(3000);
+            SeleniumWrapper.click(RegisterNowButton, driver);
            
         }
 

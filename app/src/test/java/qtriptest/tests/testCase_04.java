@@ -2,6 +2,7 @@ package qtriptest.tests;
 
 import qtriptest.DP;
 import qtriptest.DriverSingleton;
+import qtriptest.ReportSingleton;
 import qtriptest.pages.AdventureDetailsPage;
 import qtriptest.pages.AdventurePage;
 import qtriptest.pages.HistoryPage;
@@ -60,10 +61,16 @@ public static void TestCase04(String NewUserName,String Password, String dataset
         register.navigateToRegistrationPage();
         register.RegisterNewUser( NewUserName , Password, true);
         String lastUsername = register.lastgeneratedUsername;
-        LoginPage login= new LoginPage(driver);
-        
+       
+        LoginPage login= new LoginPage(driver);   
+        Thread.sleep(2000);     
 		login.performLogin(lastUsername, Password);
 		//Assert.assertTrue(login.verifyLogin());
+		
+      
+    
+        Thread.sleep(5000);
+        
 
     String[] data1 =  dataset1.split(";");
     String[] data2 =  dataset2.split(";");
@@ -74,7 +81,7 @@ public static void TestCase04(String NewUserName,String Password, String dataset
     list.add(data1);
     list.add(data2);
     list.add(data3);
-
+    ReportSingleton.test=ReportSingleton.report.startTest( "Verify booking history can be viewed");
     for(String[] data : list){
 
 
@@ -119,121 +126,121 @@ public static void TestCase04(String NewUserName,String Password, String dataset
 
 
 
-// public static void TestCase04(String Username,String password, String dataset1,String dataset2, String dataset3) throws InterruptedException{
+// // public static void TestCase04(String Username,String password, String dataset1,String dataset2, String dataset3) throws InterruptedException{
 
 
 
             	
-		// driver.manage().window().maximize();
-		// Thread.sleep(5000);
+// 		// driver.manage().window().maximize();
+// 		// Thread.sleep(5000);
 
 
-		// HomePage home= new HomePage(driver);
-		// home.navigatetoHomePage();
+// 		// HomePage home= new HomePage(driver);
+// 		// home.navigatetoHomePage();
         
 
-        // RegisterPage register = new RegisterPage(driver);
+//         // RegisterPage register = new RegisterPage(driver);
        
-        // register.navigateToRegistrationPage();
-        // register.RegisterNewUser( Username , password, true);
-        // String lastUsername = register.lastgeneratedUsername;
-        // LoginPage login= new LoginPage(driver);
+//         // register.navigateToRegistrationPage();
+//         // register.RegisterNewUser( Username , password, true);
+//         // String lastUsername = register.lastgeneratedUsername;
+//         // LoginPage login= new LoginPage(driver);
         
-		// login.performLogin(lastUsername, password);
-		// //Assert.assertTrue(login.verifyLogin());
+// 		// login.performLogin(lastUsername, password);
+// 		// //Assert.assertTrue(login.verifyLogin());
 		
-        // String[] data1 = dataset1.split(";");
-        // String[] data2 = dataset2.split(";");
-        // String[] data3 = dataset3.split(";");
+//         // String[] data1 = dataset1.split(";");
+//         // String[] data2 = dataset2.split(";");
+//         // String[] data3 = dataset3.split(";");
 
-        // List<String[]> list = new ArrayList<>();
-        // list.add(data1);
-        // list.add(data2);
-        // list.add(data3);
+//         // List<String[]> list = new ArrayList<>();
+//         // list.add(data1);
+//         // list.add(data2);
+//         // list.add(data3);
 
-        // for(String[] data :list){
+//         // for(String[] data :list){
 
         
         
-    //     home.searchCity(data1[0]);
+//     //     home.searchCity(data1[0]);
        
-    //     Thread.sleep(2000);
+//     //     Thread.sleep(2000);
        
-    //      //Assert.assertTrue(home.AssertAutoCompleteText(), "Suggestion city not  Found");
-    //      home.SelectCity();
+//     //      //Assert.assertTrue(home.AssertAutoCompleteText(), "Suggestion city not  Found");
+//     //      home.SelectCity();
 
-    //      AdventurePage adventurePage = new AdventurePage(driver);
-    //      adventurePage.searchAdventure(data1[1]);
-    //      adventurePage.SelectAdventure();
+//     //      AdventurePage adventurePage = new AdventurePage(driver);
+//     //      adventurePage.searchAdventure(data1[1]);
+//     //      adventurePage.SelectAdventure();
 
-    //      AdventureDetailsPage adventurePagedetails = new AdventureDetailsPage(driver);
+//     //      AdventureDetailsPage adventurePagedetails = new AdventureDetailsPage(driver);
 
-    //      adventurePagedetails.bookAdventure(data1[2], data1[3], data1[4]);
-    //      adventurePagedetails.isBookingSuccesful();
-    //      //adventurePagedetails.clickonHistoryPage();
+//     //      adventurePagedetails.bookAdventure(data1[2], data1[3], data1[4]);
+//     //      adventurePagedetails.isBookingSuccesful();
+//     //      //adventurePagedetails.clickonHistoryPage();
 
 
 
                  
-    //     Thread.sleep(5000);
-    //     home.navigatetoHomePage();
+//     //     Thread.sleep(5000);
+//     //     home.navigatetoHomePage();
 
-    //     home.searchCity(data2[0]);
+//     //     home.searchCity(data2[0]);
        
-    //     Thread.sleep(2000);
+//     //     Thread.sleep(2000);
       
-    //      //Assert.assertTrue(home.AssertAutoCompleteText(), "Suggestion city not  Found");
-    //      home.SelectCity();
+//     //      //Assert.assertTrue(home.AssertAutoCompleteText(), "Suggestion city not  Found");
+//     //      home.SelectCity();
 
-    //      AdventurePage adventurePage1 = new AdventurePage(driver);
-    //      adventurePage1.searchAdventure(data2[1]);
-    //      adventurePage1.SelectAdventure();
+//     //      AdventurePage adventurePage1 = new AdventurePage(driver);
+//     //      adventurePage1.searchAdventure(data2[1]);
+//     //      adventurePage1.SelectAdventure();
 
-    //      AdventureDetailsPage adventurePagedetails1 = new AdventureDetailsPage(driver);
+//     //      AdventureDetailsPage adventurePagedetails1 = new AdventureDetailsPage(driver);
 
-    //      adventurePagedetails1.bookAdventure(data2[2], data2[3], data2[4]);
-    //      adventurePagedetails1.isBookingSuccesful();
-    //      //adventurePagedetails.clickonHistoryPage();
+//     //      adventurePagedetails1.bookAdventure(data2[2], data2[3], data2[4]);
+//     //      adventurePagedetails1.isBookingSuccesful();
+//     //      //adventurePagedetails.clickonHistoryPage();
 
 
   
 
-    //      home.navigatetoHomePage();
-    //      home.searchCity(data3[0]);
+//     //      home.navigatetoHomePage();
+//     //      home.searchCity(data3[0]);
        
-    //      Thread.sleep(2000);
-    //      // Assert.assertTrue(home.AssertAutoCompleteText(), "Suggestion city not  Found");
-    //       home.SelectCity();
+//     //      Thread.sleep(2000);
+//     //      // Assert.assertTrue(home.AssertAutoCompleteText(), "Suggestion city not  Found");
+//     //       home.SelectCity();
  
 
  
-    //      AdventurePage adventurePage2 = new AdventurePage(driver);
-    //      adventurePage2.searchAdventure(data3[1]);
-    //      adventurePage2.SelectAdventure();
+//     //      AdventurePage adventurePage2 = new AdventurePage(driver);
+//     //      adventurePage2.searchAdventure(data3[1]);
+//     //      adventurePage2.SelectAdventure();
 
-    //      AdventureDetailsPage adventurePagedetails2 = new AdventureDetailsPage(driver);
+//     //      AdventureDetailsPage adventurePagedetails2 = new AdventureDetailsPage(driver);
 
-    //      adventurePagedetails2.bookAdventure(data3[2], data3[3], data3[4]);
-    //      adventurePagedetails2.isBookingSuccesful();
-    //      //adventurePagedetails2.clickonHistoryPage();
+//     //      adventurePagedetails2.bookAdventure(data3[2], data3[3], data3[4]);
+//     //      adventurePagedetails2.isBookingSuccesful();
+//     //      //adventurePagedetails2.clickonHistoryPage();
 
          
 
 
 
 
-    //     HistoryPage history= new HistoryPage(driver);
-    //     history.reservationClick();
-    //     history.storeTransactionId();
-    //         // history.cancelReservations();
-    //      //history.logout();
-    //   //  }
+//     //     HistoryPage history= new HistoryPage(driver);
+//     //     history.reservationClick();
+//     //     history.storeTransactionId();
+//     //         // history.cancelReservations();
+//     //      //history.logout();
+//     //   //  }
         
         
-    //     //HistoryPage history= new HistoryPage(driver);
-    //     // history.storeTransactionId();
-    //     //  history.cancelReservations();
-    //      history.logout();
+//     //     //HistoryPage history= new HistoryPage(driver);
+//     //     // history.storeTransactionId();
+//     //     //  history.cancelReservations();
+//     //      history.logout();
 
 
 
@@ -260,6 +267,6 @@ public static void TestCase04(String NewUserName,String Password, String dataset
 
 
 
-        }
+       }
 
 

@@ -1,6 +1,7 @@
 
 package qtriptest.pages;
 
+import qtriptest.SeleniumWrapper;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 import org.openqa.selenium.WebElement;
@@ -60,9 +61,12 @@ public class AdventurePage {
         select1.selectByIndex(3);
     }
 
-    public boolean getResultCount(String filteredResult) {
-        clear_hours.click();
-        clear_Category.click();
+    public boolean getResultCount(String filteredResult) throws InterruptedException {
+        
+        SeleniumWrapper.click(clear_hours, driver);
+        SeleniumWrapper.click(clear_Category, driver);
+        // clear_hours.click();
+        // clear_Category.click();
         Integer actualResult = numberOfAdventure.size();
         String result = actualResult.toString();
         return result.equals(filteredResult);
@@ -73,20 +77,23 @@ public class AdventurePage {
         select2.selectByIndex(3);
     }
 
-    public void ClearFilterValue() {
-        clear_Adventure.click();
+    public void ClearFilterValue() throws InterruptedException {
+        SeleniumWrapper.click(clear_Adventure, driver);
+        //clear_Adventure.click();
     }
 
     public void searchAdventure(String AdventureName) throws InterruptedException {
 
         Thread.sleep(3000);
-        search_adventure.sendKeys(AdventureName);
+        SeleniumWrapper.sendKeys(search_adventure, AdventureName);
+        //search_adventure.sendKeys(AdventureName);
 
     }
 
-    public void SelectAdventure() {
+    public void SelectAdventure() throws InterruptedException {
 
-        select_Adventure.click();
+        SeleniumWrapper.click(select_Adventure, driver);
+       // select_Adventure.click();
     }
 }
 

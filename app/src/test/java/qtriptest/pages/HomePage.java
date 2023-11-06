@@ -1,8 +1,10 @@
 package qtriptest.pages;
 
 import net.bytebuddy.asm.Advice.This;
+import qtriptest.SeleniumWrapper;
 import java.util.concurrent.TimeUnit;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.FindBy;
@@ -21,7 +23,7 @@ public class HomePage {
         // driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
          PageFactory.initElements(this.driver, this);
         // driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
-        // PageFactory.initElements(new AjaxElementLocatorFactory(driver, 20), this);
+        PageFactory.initElements(new AjaxElementLocatorFactory(driver, 20), this);
 
     }
 
@@ -47,8 +49,9 @@ public class HomePage {
     WebElement resultcity;
 
 
-    public void ClickOnRegister(){
-        RegisteBtn.click();
+    public void ClickOnRegister() throws InterruptedException{
+       // RegisteBtn.click();
+       SeleniumWrapper.click(RegisteBtn, driver);
     }
 
     public boolean isUserLoggedIn(){
@@ -67,7 +70,10 @@ public class HomePage {
     
     public void  searchCity(String city) throws InterruptedException {
            // Thread.sleep(2000);
-           SearchBtn.sendKeys(city);
+           SeleniumWrapper.sendKeys(SearchBtn, city);
+          Thread.sleep(1000);
+           driver.findElement(By.xpath("//input[@class='hero-input']")).sendKeys(Keys.BACK_SPACE);
+           //SearchBtn.sendKeys(city);
            
            // SearchBtn.click();
          //   Thread.sleep(3000);
@@ -98,10 +104,11 @@ public class HomePage {
     
     }
 
-    public boolean SelectCity(){
+    public boolean SelectCity() throws InterruptedException{
        if(resultcity.isDisplayed()){
        // driver.findElement(By.xpath("//a/li")).click();
-       resultcity.click();
+      SeleniumWrapper.click(resultcity, driver);
+      // resultcity.click();
        }else{
         return false;
        }

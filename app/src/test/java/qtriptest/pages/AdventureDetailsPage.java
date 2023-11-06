@@ -1,14 +1,11 @@
 package qtriptest.pages;
 
-import java.util.concurrent.TimeUnit;
-import org.apache.poi.ss.formula.functions.Count;
+import qtriptest.SeleniumWrapper;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.WebDriver.Timeouts;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.pagefactory.AjaxElementLocator;
-import org.openqa.selenium.support.pagefactory.AjaxElementLocatorFactory;
 
 public class AdventureDetailsPage {
 
@@ -49,17 +46,21 @@ public class AdventureDetailsPage {
 
     public void bookAdventure(String name, String date, String Count) throws InterruptedException {
         Thread.sleep(2000);
-        name_input_Bx.clear();
 
-        name_input_Bx.sendKeys(name);
+       // name_input_Bx.clear();
+        SeleniumWrapper.sendKeys(name_input_Bx, name);
+       // name_input_Bx.sendKeys(name);
 
-        date_input_Bx.sendKeys(date);
+       SeleniumWrapper.sendKeys(date_input_Bx, date);
+       // date_input_Bx.sendKeys(date);
 
-        person_count.clear();
+        //person_count.clear();
 
-        person_count.sendKeys(Count);
+        SeleniumWrapper.sendKeys(person_count, Count);
+        //person_count.sendKeys(Count);
 
-        reserve_button.click();
+        SeleniumWrapper.click(reserve_button, driver);
+        //reserve_button.click();
 
 
     }
@@ -77,9 +78,10 @@ public class AdventureDetailsPage {
         }
     }
 
-    public void clickonHistoryPage() {
+    public void clickonHistoryPage() throws InterruptedException {
 
-        click_here_link.click();
+       SeleniumWrapper.click(click_here_link, driver);
+        //click_here_link.click();
 
     }
 
